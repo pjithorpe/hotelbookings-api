@@ -7,5 +7,8 @@ namespace HotelBookingsAPI.Models
 {
     public class Room
     {
+        public int RoomID { get; set; }
+        public int HotelID { get; set; }
+        public string Type { get; set; }
     }
 }
