@@ -3,9 +3,9 @@ using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using HotelBookingsAPI.Models;
+using HotelBookingsAPI.App.Models;
 
-namespace HotelBookingsAPI.Repositories
+namespace HotelBookingsAPI.App.Repositories
 {
     public interface IHotelRepository
     {

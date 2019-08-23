@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-using HotelBookingsAPI.Services;
-using HotelBookingsAPI.Models;
+using HotelBookingsAPI.App.Services;
+using HotelBookingsAPI.App.Models;
 
 namespace HotelBookingsAPI.Controllers
 {

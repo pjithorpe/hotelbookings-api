@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HotelBookingsAPI.Models;
+using HotelBookingsAPI.App.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelBookingsAPI

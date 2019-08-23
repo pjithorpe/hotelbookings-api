@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 
 using System.Threading.Tasks;
+using HotelBookingsAPI.App.Models;
+using HotelBookingsAPI.App.Repositories;
 using Microsoft.EntityFrameworkCore;
-using HotelBookingsAPI;
-using HotelBookingsAPI.Models;
 
 namespace Repository
 {
-    public class HotelRepository : Repository
+    public class HotelRepository : Repository, IHotelRepository
     {
-        public HotelRepository(AppDbContext dbContext) : base(dbContext)
+        public HotelRepository(HotelBookingsAPI.AppDbContext dbContext) : base(dbContext)
         {
 
         }

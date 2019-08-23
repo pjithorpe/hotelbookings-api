@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using HotelBookingsAPI.Models;
-using HotelBookingsAPI.Repositories;
-using HotelBookingsAPI.Services;
+using HotelBookingsAPI.App.Models;
+using HotelBookingsAPI.App.Repositories;
+using HotelBookingsAPI.App.Services;
 
-namespace Services
+namespace Service
 {
     public class BookingService : IBookingService
     {

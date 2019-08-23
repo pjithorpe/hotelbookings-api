@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelBookingsAPI.Models
+namespace HotelBookingsAPI.App.Models
 {
     public class Room
     {

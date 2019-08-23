@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HotelBookingsAPI.App.Repositories;
+using HotelBookingsAPI.App.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Repository;
+using Service;
 
 namespace HotelBookingsAPI
 {
@@ -30,8 +34,11 @@ namespace HotelBookingsAPI
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("connectionString"));
+                options.UseSqlServer(Configuration.GetConnectionString("dbConnection"));
             });
+
+            services.AddScoped<IHotelRepository, HotelRepository>();
+            services.AddScoped<IHotelService, HotelService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
