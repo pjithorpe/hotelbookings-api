@@ -11,5 +11,6 @@ namespace HotelBookingsAPI.App.Models
         public int RoomID { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public int PartySize { get; set; }
     }
 }

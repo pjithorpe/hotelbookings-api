@@ -9,6 +9,6 @@ namespace HotelBookingsAPI.App.Models
     {
         public int RoomID { get; set; }
         public int HotelID { get; set; }
-        public string Type { get; set; }
+        public int Type { get; set; }
     }
 }

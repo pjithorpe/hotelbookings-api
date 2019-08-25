@@ -36,6 +36,7 @@ namespace HotelBookingsAPI
             builder.Entity<Booking>().Property(b => b.RoomID).IsRequired();
             builder.Entity<Booking>().Property(b => b.StartDate).IsRequired();
             builder.Entity<Booking>().Property(b => b.EndDate).IsRequired();
+            builder.Entity<Booking>().Property(b => b.PartySize).IsRequired();
         }
     }
 }

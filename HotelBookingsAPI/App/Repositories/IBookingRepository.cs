@@ -13,6 +13,8 @@ namespace HotelBookingsAPI.App.Repositories
 
         Task AddAsync(Booking booking);
 
-        Task<bool> CheckBookingAsync(Booking booking);
+        Task<bool> CheckClashAsync(Booking booking);
+
+        Task<bool> CheckCapacityAsync(Booking booking);
     }
 }
