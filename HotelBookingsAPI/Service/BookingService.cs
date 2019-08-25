@@ -25,8 +25,8 @@ namespace Service
 
         public async Task<Result> SaveAsync(Booking booking)
         {
-            // Check end date is after start date
-            if (booking.StartDate < booking.EndDate)
+            // Check dates are in the future and end date is after start date
+            if (booking.StartDate > DateTime.Now && booking.StartDate < booking.EndDate)
             {
                 // Check for booking clashes
                 if (await bookingRepository.CheckClashAsync(booking))
