@@ -10,5 +10,7 @@ namespace HotelBookingsAPI.App.Repositories
     public interface IRoomRepository
     {
         Task<IEnumerable<Room>> ListAsync();
+
+        Task AddAsync(Room room);
     }
 }

@@ -20,5 +20,11 @@ namespace Repository
         {
             return await dbContext.Rooms.ToListAsync();
         }
+
+        public async Task AddAsync(Room room)
+        {
+            await dbContext.Rooms.AddAsync(room);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

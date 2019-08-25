@@ -17,5 +17,11 @@ namespace Repository
         {
             return await dbContext.Bookings.ToListAsync();
         }
+
+        public async Task AddAsync(Booking booking)
+        {
+            await dbContext.Bookings.AddAsync(booking);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HotelBookingsAPI.App.Models;
 using HotelBookingsAPI.App.Repositories;
 using HotelBookingsAPI.App.Services;
+using HotelBookingsAPI.Enums;
 
 namespace Service
 {
@@ -20,6 +21,19 @@ namespace Service
         public async Task<IEnumerable<Room>> ListAsync()
         {
             return await roomRepository.ListAsync();
+        }
+
+        public async Task<Result> SaveAsync(Room room)
+        {
+            try
+            {
+                await roomRepository.AddAsync(room);
+                return Result.Success;
+            }
+            catch
+            {
+                return Result.Failure;
+            }
         }
     }
 }
