@@ -18,8 +18,12 @@ namespace Service
             this.hotelRepository = hotelRepository;
         }
 
-        public async Task<IEnumerable<Hotel>> ListAsync()
+        public async Task<IEnumerable<Hotel>> ListAsync(string name = "")
         {
+            if (name != "")
+            {
+                return await hotelRepository.ListAsync(name);
+            }
             return await hotelRepository.ListAsync();
         }
 

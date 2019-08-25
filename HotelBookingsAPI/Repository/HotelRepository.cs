@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Repository
         public async Task<IEnumerable<Hotel>> ListAsync()
         {
             return await dbContext.Hotels.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Hotel>> ListAsync(string name)
+        {
+            return await dbContext.Hotels.Where(h => h.Name == name).ToListAsync();
         }
 
         public async Task AddAsync(Hotel hotel)
