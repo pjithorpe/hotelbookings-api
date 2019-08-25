@@ -20,5 +20,11 @@ namespace Repository
         {
             return await dbContext.Hotels.ToListAsync();
         }
+
+        public async Task AddAsync(Hotel hotel)
+        {
+            await dbContext.Hotels.AddAsync(hotel);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

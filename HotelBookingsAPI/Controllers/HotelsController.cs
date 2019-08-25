@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using HotelBookingsAPI.App.Services;
 using HotelBookingsAPI.App.Models;
+using HotelBookingsAPI.Enums;
 
 namespace HotelBookingsAPI.Controllers
 {
@@ -24,6 +25,24 @@ namespace HotelBookingsAPI.Controllers
         {
             var hotels = await hotelService.ListAsync();
             return hotels;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] Hotel hotel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Post error"); // TODO: More error information
+            }
+
+            Result result = await hotelService.SaveAsync(hotel);
+
+            if (result == Result.Failure)
+            {
+                return BadRequest("Post error");
+            }
+
+            return Ok();
         }
     }
 }

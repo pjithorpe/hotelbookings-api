@@ -4,11 +4,14 @@ using System.Linq;
 
 using HotelBookingsAPI.App.Models;
 using System.Threading.Tasks;
+using HotelBookingsAPI.Enums;
 
 namespace HotelBookingsAPI.App.Services
 {
     public interface IHotelService
     {
         Task<IEnumerable<Hotel>> ListAsync();
+
+        Task<Result> SaveAsync(Hotel hotel);
     }
 }
