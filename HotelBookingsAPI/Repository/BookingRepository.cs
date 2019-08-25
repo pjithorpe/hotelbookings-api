@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
@@ -22,6 +23,15 @@ namespace Repository
         {
             await dbContext.Bookings.AddAsync(booking);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> CheckBookingAsync(Booking booking)
+        {
+            // Get bookings for the same room and then compare with new booking to see if there are any clashes
+            return !await dbContext.Bookings
+                .Where(b => b.RoomID == booking.RoomID)
+                .Where(b => b.StartDate < booking.EndDate && booking.StartDate < b.EndDate)
+                .AnyAsync();
         }
     }
 }

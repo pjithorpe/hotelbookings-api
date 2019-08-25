@@ -24,7 +24,9 @@ namespace Repository
 
         public async Task<IEnumerable<Hotel>> ListAsync(string name)
         {
-            return await dbContext.Hotels.Where(h => h.Name == name).ToListAsync();
+            return await dbContext.Hotels
+                .Where(h => h.Name == name)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Hotel hotel)
