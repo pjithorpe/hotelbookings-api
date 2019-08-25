@@ -25,20 +25,24 @@ namespace Service
 
         public async Task<Result> SaveAsync(Booking booking)
         {
-            // Check for booking clashes
-            if (await bookingRepository.CheckClashAsync(booking))
+            // Check end date is after start date
+            if (booking.StartDate < booking.EndDate)
             {
-                // Check that party will fit into the room's capacity
-                if (await bookingRepository.CheckCapacityAsync(booking))
+                // Check for booking clashes
+                if (await bookingRepository.CheckClashAsync(booking))
                 {
-                    try
+                    // Check that party will fit into the room's capacity
+                    if (await bookingRepository.CheckCapacityAsync(booking))
                     {
-                        await bookingRepository.AddAsync(booking);
-                        return Result.Success;
-                    }
-                    catch
-                    {
-                        return Result.Failure;
+                        try
+                        {
+                            await bookingRepository.AddAsync(booking);
+                            return Result.Success;
+                        }
+                        catch
+                        {
+                            return Result.Failure;
+                        }
                     }
                 }
             }
