@@ -25,15 +25,19 @@ namespace Service
 
         public async Task<Result> SaveAsync(Room room)
         {
-            try
+            if (await roomRepository.CheckMaxRoomsAsync(room))
             {
-                await roomRepository.AddAsync(room);
-                return Result.Success;
+                try
+                {
+                    await roomRepository.AddAsync(room);
+                    return Result.Success;
+                }
+                catch
+                {
+                    return Result.Failure;
+                }
             }
-            catch
-            {
-                return Result.Failure;
-            }
+            return Result.Failure; //TODO: add more error info
         }
     }
 }

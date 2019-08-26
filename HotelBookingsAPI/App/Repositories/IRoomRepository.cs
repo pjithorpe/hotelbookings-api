@@ -12,5 +12,6 @@ namespace HotelBookingsAPI.App.Repositories
         Task<IEnumerable<Room>> ListAsync();
 
         Task AddAsync(Room room);
+        Task<bool> CheckMaxRoomsAsync(Room room);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace Repository
         {
             await dbContext.Rooms.AddAsync(room);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> CheckMaxRoomsAsync(Room room)
+        {
+            int roomCount = await dbContext.Rooms.CountAsync(r => r.HotelID == room.HotelID);
+            return roomCount < 6;
         }
     }
 }
