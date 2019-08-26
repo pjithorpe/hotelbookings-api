@@ -33,6 +33,7 @@ namespace HotelBookingsTest.Service
 
         public async Task<Result> SaveAsync(Hotel hotel)
         {
+            hotel.HotelID = hotels.Select(h => hotel.HotelID).Max() + 1;
             hotels.Add(hotel);
             return Result.Success;
         }
