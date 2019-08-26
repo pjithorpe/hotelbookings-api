@@ -21,9 +21,9 @@ namespace HotelBookingsAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Room>> GetAllAsync()
+        public async Task<IEnumerable<Room>> GetAllAsync([FromQuery (Name = "start_date")] string startDate = "", [FromQuery (Name = "end_date")] string endDate = "", [FromQuery (Name = "party_size")] int partySize = 0)
         {
-            var rooms = await roomService.ListAsync();
+            var rooms = await roomService.ListAsync(startDate, endDate, partySize);
             return rooms;
         }
 

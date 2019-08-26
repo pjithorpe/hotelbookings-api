@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HotelBookingsAPI.App.Models;
 using HotelBookingsAPI.App.Repositories;
+using HotelBookingsAPI.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repository
@@ -20,6 +21,19 @@ namespace Repository
         public async Task<IEnumerable<Room>> ListAsync()
         {
             return await dbContext.Rooms.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Room>> ListAsync(DateTime startDate, DateTime endDate, int partySize)
+        {
+            // Get RoomIDs of bookings that clash with the dates
+            var unavailableRooms = await dbContext.Bookings
+                .Where(b => b.StartDate < endDate && startDate < b.EndDate)
+                .Select(b => b.RoomID)
+                .ToListAsync();
+            // Only return available rooms that have sufficient capacity
+            return await dbContext.Rooms
+                .Where(r => !unavailableRooms.Contains(r.RoomID) && partySize <= r.GetCapacity())
+                .ToListAsync();
         }
 
         public async Task AddAsync(Room room)

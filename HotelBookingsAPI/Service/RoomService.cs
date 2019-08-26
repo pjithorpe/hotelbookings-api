@@ -18,8 +18,15 @@ namespace Service
             this.roomRepository = roomRepository;
         }
 
-        public async Task<IEnumerable<Room>> ListAsync()
+        public async Task<IEnumerable<Room>> ListAsync(string startDate, string endDate, int partySize)
         {
+            DateTime sDate, eDate;
+            // Check dates and party size are valid
+            if (DateTime.TryParse(startDate, out sDate) && DateTime.TryParse(endDate, out eDate) && partySize > 0)
+            {
+                return await roomRepository.ListAsync(sDate, eDate, partySize);
+            }
+            // otherwise, just resort to get-all
             return await roomRepository.ListAsync();
         }
 

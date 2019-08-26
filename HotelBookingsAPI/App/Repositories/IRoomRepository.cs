@@ -11,7 +11,10 @@ namespace HotelBookingsAPI.App.Repositories
     {
         Task<IEnumerable<Room>> ListAsync();
 
+        Task<IEnumerable<Room>> ListAsync(DateTime startDate, DateTime endDate, int partySize);
+
         Task AddAsync(Room room);
+
         Task<bool> CheckMaxRoomsAsync(Room room);
     }
 }
