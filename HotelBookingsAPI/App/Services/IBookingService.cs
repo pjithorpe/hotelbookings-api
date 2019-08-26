@@ -10,7 +10,7 @@ namespace HotelBookingsAPI.App.Services
 {
     public interface IBookingService
     {
-        Task<IEnumerable<Booking>> ListAsync();
+        Task<IEnumerable<Booking>> ListAsync(int id);
 
         Task<Result> SaveAsync(Booking booking);
     }

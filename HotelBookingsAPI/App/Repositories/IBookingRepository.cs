@@ -10,6 +10,7 @@ namespace HotelBookingsAPI.App.Repositories
     public interface IBookingRepository
     {
         Task<IEnumerable<Booking>> ListAsync();
+        Task<Booking> GetFromIDAsync(int id);
 
         Task AddAsync(Booking booking);
 

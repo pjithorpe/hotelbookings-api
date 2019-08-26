@@ -18,8 +18,13 @@ namespace Service
             this.bookingRepository = bookingRepository;
         }
 
-        public async Task<IEnumerable<Booking>> ListAsync()
+        public async Task<IEnumerable<Booking>> ListAsync(int id)
         {
+            if (id > -1)
+            {
+                // TODO: work out a way of only returning the booking object (not a list)
+                return new List<Booking>() { await bookingRepository.GetFromIDAsync(id) };
+            }
             return await bookingRepository.ListAsync();
         }
 

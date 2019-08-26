@@ -21,9 +21,9 @@ namespace HotelBookingsAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Booking>> GetAllAsync()
+        public async Task<IEnumerable<Booking>> GetAllAsync([FromQuery]int id = -1)
         {
-            var bookings = await bookingService.ListAsync();
+            var bookings = await bookingService.ListAsync(id);
             return bookings;
         }
 

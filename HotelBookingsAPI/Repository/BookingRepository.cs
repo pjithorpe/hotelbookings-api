@@ -20,6 +20,11 @@ namespace Repository
             return await dbContext.Bookings.ToListAsync();
         }
 
+        public async Task<Booking> GetFromIDAsync(int id)
+        {
+            return await dbContext.Bookings.FindAsync(id);
+        }
+
         public async Task AddAsync(Booking booking)
         {
             await dbContext.Bookings.AddAsync(booking);
