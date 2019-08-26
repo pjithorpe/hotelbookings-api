@@ -45,6 +45,10 @@ namespace HotelBookingsAPI
 
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IBookingService, BookingService>();
+
+            // For testing purposes
+            services.AddScoped<APITestingService, APITestingService>();
+            services.AddScoped<APITestingRepository, APITestingRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
