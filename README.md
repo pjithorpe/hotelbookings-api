@@ -1,5 +1,7 @@
 ## hotelbookings-api
 
+.Net Core Web API for interacting with an Azure hosted hotel bookings database.
+
 # Hotels
 * GET api/hotels - Lists all hotels
 * GET api/hotels?name=\[NAME\] - Gets all hotels with name of \[NAME\]
